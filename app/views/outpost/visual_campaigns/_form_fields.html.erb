@@ -1,12 +1,13 @@
 <%= form_block "Metadata" do %>
-    <%= f.input :title %>
+    <%= f.input :title, hint: "For internal use only." %>
     <%= f.input :output_key, hint: "The key used to request this campaign. If multiple active campaigns have the same key, a random one will be selected." %>
-    <%= f.input :domains, hint: "Comma-separated list of domains to allow access to this campaign.<br />Common examples: www.scpr.org, audiobox.scpr.org, scprdev.org<br /><strong>If you leave this blank, this campaign won't be active.</strong>".html_safe %>
+    <%= f.input :domains, hint: "Comma-separated list of domains to allow access to this campaign.<br />Common examples: www.scpr.org, audiobox.scpr.org, scprdev.org<br /><strong>If you leave this blank, it will load from any domain.</strong>".html_safe %>
 <% end %>
 
 <%= form_block "Scheduling" do %>
     <div class="alert alert-info">
-        Empty scheduling fields will mark this campaign inactive.
+        To mark this campaign as inactive, leave these fields blank.<br />
+        Setting one or both will automatically activate/deactivate this campaign based on these times.
     </div>
 
     <%= f.input :starts_at, include_blank: true %>
