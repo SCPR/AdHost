@@ -17,4 +17,18 @@ class Outpost::PrerollCampaignsController < Outpost::ResourceController
 
     l.filter :output_key
   end
+
+
+  private
+
+  def form_params
+    params.require(model.singular_route_key).permit(
+      :output_key,
+      :title,
+      :starts_at,
+      :ends_at,
+      :path_filter,
+      :master_file
+    )
+  end
 end

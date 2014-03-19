@@ -29,15 +29,6 @@ class PrerollCampaign < ActiveRecord::Base
 
   validates :title, presence: true
 
-  attr_accessible \
-    :output_key,
-    :title,
-    :starts_at,
-    :ends_at,
-    :path_filter,
-    :master_file
-
-
   mount_uploader :master_file, AudioUploader
   after_update :clear_encodings, :if => -> { self.master_file_changed? }
 

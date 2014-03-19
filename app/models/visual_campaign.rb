@@ -8,14 +8,6 @@ class VisualCampaign < ActiveRecord::Base
   validates :title, presence: true
   validates :output_key, presence: true
 
-  attr_accessible \
-    :title,
-    :output_key,
-    :markup,
-    :domains,
-    :starts_at,
-    :ends_at
-
 
   def allowed_domains
     self.domains.split(",")

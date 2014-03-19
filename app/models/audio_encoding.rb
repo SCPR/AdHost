@@ -27,12 +27,6 @@ class AudioEncoding < ActiveRecord::Base
   after_create :encode_async
 
 
-  attr_accessible \
-    :stream_key,
-    :campaign_id,
-    :type
-
-
   def codec
     key_parts[0]
   end

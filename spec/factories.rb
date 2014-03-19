@@ -26,6 +26,10 @@ FactoryGirl.define do
       starts_at { 2.days.ago }
       ends_at { 1.day.ago }
     end
+
+    trait :invalid do
+      title ""
+    end
   end
 
   factory :audio_encoding do
@@ -59,5 +63,10 @@ FactoryGirl.define do
       starts_at { 2.days.ago }
       ends_at { 1.day.ago }
     end
+
+    trait :invalid do
+      title ""
+    end
+
   end
 end

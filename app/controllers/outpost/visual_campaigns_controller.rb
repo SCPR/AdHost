@@ -14,4 +14,18 @@ class Outpost::VisualCampaignsController < Outpost::ResourceController
     l.column :ends_at
     l.column :domains
   end
+
+
+  private
+
+  def form_params
+    params.require(model.singular_route_key).permit(
+      :title,
+      :output_key,
+      :markup,
+      :domains,
+      :starts_at,
+      :ends_at
+    )
+  end
 end

@@ -7,6 +7,16 @@ describe Outpost::PrerollCampaignsController do
 
   let(:campaign) { create :preroll_campaign, title: "Campaign!" }
 
+  let(:valid_params) do
+    build(:preroll_campaign).attributes
+      .slice(*%w(title output_key markup starts_at ends_at domains))
+  end
+
+  let(:invalid_params) do
+    build(:preroll_campaign, :invalid).attributes
+      .slice(*%w(title output_key markup starts_at ends_at domains))
+  end
+
   describe 'index' do
     it "assigns @records" do
       campaign1 = create :preroll_campaign, :active
@@ -43,8 +53,7 @@ describe Outpost::PrerollCampaignsController do
   describe 'create' do
     context 'valid record' do
       before do
-        post :create, preroll_campaign: build(:preroll_campaign).attributes.slice(
-          *%w(title output_key master_file path_filter starts_at ends_at))
+        post :create, preroll_campaign: valid_params
       end
 
       it 'creates the record' do
@@ -58,7 +67,8 @@ describe Outpost::PrerollCampaignsController do
 
     context 'invalid record' do
       before do
-        post :create, preroll_campaign: {}
+        post :create,
+          :preroll_campaign => invalid_params
       end
 
       it "doesn't save the record" do
@@ -73,31 +83,25 @@ describe Outpost::PrerollCampaignsController do
 
   describe 'update' do
     it "assigns @record" do
-      put :update, id: campaign.id
+      put :update, id: campaign.id, preroll_campaign: { title: "Updated" }
       assigns(:record).should eq campaign
     end
 
     context 'valid record' do
       it "updates the object" do
-        put :update, id: campaign.id, preroll_campaign: {
-          :title => "Testing 123"
-        }
-
+        put :update, id: campaign.id, preroll_campaign: { title: "Testing 123" }
         PrerollCampaign.find(campaign.id).title.should eq "Testing 123"
       end
 
       it 'redirects to edit' do
-        put :update, id: campaign.id
+        put :update, id: campaign.id, preroll_campaign: { title: "Updated" }
         response.should redirect_to outpost_preroll_campaigns_path
       end
     end
 
     context 'invalid record' do
       it "doesn't update the object" do
-        put :update, id: campaign.id, preroll_campaign: {
-          :title => ""
-        }
-
+        put :update, id: campaign.id, preroll_campaign: { title: "" }
         PrerollCampaign.find(campaign.id).title.should eq "Campaign!"
       end
 
