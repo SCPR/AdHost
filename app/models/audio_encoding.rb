@@ -83,7 +83,7 @@ class AudioEncoding < ActiveRecord::Base
       # make sure the file we created is valid...
       newfile = FFMPEG::Movie.new(f.path)
       if newfile.valid?
-        self.fingerprint = SecureRandom.hex(4)
+        self.fingerprint = SecureRandom.hex(16)
 
         # now write it into place in our final location
         File.open(self.path, 'w', encoding: "ascii-8bit") do |ff|

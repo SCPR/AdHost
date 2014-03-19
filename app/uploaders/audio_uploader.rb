@@ -20,8 +20,8 @@ class AudioUploader < CarrierWave::Uploader::Base
 
   def filename
     return if !file
-    fingerprint = SecureRandom.hex(4)
-    @random_filename ||= "#{model.id}-#{fingerprint}-#{file.extension}"
+    fingerprint = SecureRandom.hex(16)
+    @random_filename ||= "master-#{fingerprint}.#{file.extension}"
   end
 
 
