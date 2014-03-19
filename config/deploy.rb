@@ -3,7 +3,7 @@ require 'new_relic/recipes'
 
 set :application, "Audiobox"
 set :scm, :git
-set :repository,  "git@github.com:SCPR/Audiobox.git"
+set :repository,  "git@github.com:SCPR/AdHost.git"
 set :branch, "master"
 set :scm_verbose, true
 set :deploy_via, :remote_cache
@@ -51,5 +51,4 @@ namespace :deploy do
       run "ln -nfs #{shared_path}/config/#{file} #{release_path}/config/#{file}"
     end
   end
-
 end
