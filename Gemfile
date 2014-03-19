@@ -9,7 +9,7 @@ gem 'jquery-rails', '~> 3.1.0'
 gem 'jbuilder', '~> 2.0.4'
 gem 'resque', '~> 1.25.2'
 gem 'carrierwave', '~> 0.10.0'
-gem "redis-store", '~> 1.1.4'
+gem 'redis-rails', '~> 4.0.0'
 
 gem 'outpost-cms', github: 'SCPR/outpost'
 #gem 'outpost-cms', path: "#{ENV['PROJECT_HOME']}/outpost"
