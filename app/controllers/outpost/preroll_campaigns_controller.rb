@@ -9,6 +9,8 @@ class Outpost::PrerollCampaignsController < Outpost::ResourceController
 
     l.column :title
     l.column :output_key, header: "Key"
+    l.column :active?, display: :display_boolean
+
     l.column :starts_at,
       :sortable                   => true,
       :default_order_direction    => Outpost::DESCENDING

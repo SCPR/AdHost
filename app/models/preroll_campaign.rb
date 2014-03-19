@@ -2,6 +2,8 @@ class PrerollCampaign < ActiveRecord::Base
   class InvalidAudioError < StandardError
   end
 
+  include ActiveCheck
+
   # We need to limit allowed stream keys, otherwise we would be allowing
   # a theoretically inifinite number of preroll files to be created
   # by anyone with the preroll endpoint.

@@ -1,4 +1,6 @@
 class VisualCampaign < ActiveRecord::Base
+  include ActiveCheck
+
   outpost_model
 
   scope :active, -> {
