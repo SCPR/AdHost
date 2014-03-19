@@ -29,7 +29,7 @@ task :staging do
   role :db,  staging, :primary => true
 end
 
-before "deploy:create_symlink", "deploy:symlink_config"
+before "deploy:assets:precompile", "deploy:symlink_config"
 after "deploy:restart", "newrelic:notice_deployment"
 
 namespace :deploy do
