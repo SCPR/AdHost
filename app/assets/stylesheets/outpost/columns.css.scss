@@ -1,0 +1,14 @@
+table {
+    &.list-preroll_campaigns {
+        .column-active {
+            width: $booleanWidth;
+        }
+    }
+
+    &.list-visual_campaigns {
+        .column-active {
+            width: $booleanWidth;
+        }
+    }
+
+}
