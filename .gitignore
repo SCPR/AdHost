@@ -1,0 +1,13 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+public/audio
+public/uploads
+config/newrelic.yml
+config/database.yml
+config/app_config.yml
+config/environments/development.rb

@@ -1,0 +1,54 @@
+<h3>Active Preroll</h3>
+
+<%= any_to_list? @active_preroll_campaigns, message: "There are no active Prerolls." do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Edit</th>
+        <th>Title</th>
+        <th>Output</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_preroll_campaigns.each do |campaign| %>
+        <tr>
+          <td><%= link_to "Edit", campaign.admin_edit_path, class: 'btn' %></td>
+          <td><%= campaign.title %></td>
+          <td><%= campaign.output_key %></td>
+          <td><%= display_datetime(campaign.starts_at) %></td>
+          <td><%= display_datetime(campaign.ends_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+
+<h3>Active Visual Campaigns</h3>
+
+<%= any_to_list? @active_visual_campaigns, message: "There are no active Visual Campaigns." do %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Edit</th>
+        <th>Title</th>
+        <th>Output</th>
+        <th>Start</th>
+        <th>End</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_visual_campaigns.each do |campaign| %>
+        <tr>
+          <td><%= link_to "Edit", campaign.admin_edit_path, class: 'btn' %></td>
+          <td><%= campaign.title %></td>
+          <td><%= campaign.output_key %></td>
+          <td><%= display_datetime(campaign.starts_at) %></td>
+          <td><%= display_datetime(campaign.ends_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
