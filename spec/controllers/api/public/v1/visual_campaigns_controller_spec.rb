@@ -8,7 +8,7 @@ describe Api::Public::V1::VisualCampaignsController do
       create :visual_campaign,
         :active,
         :output_key   => "pushdown",
-        :domains      => "scpr.org",
+        :domains      => "scpr.org,www.scpr.org",
         :markup       => "<div>WAT</div>"
     }
 
@@ -77,6 +77,19 @@ describe Api::Public::V1::VisualCampaignsController do
       it 'renders unauthorized' do
         get :show, key: campaign.output_key, format: :json
         response.status.should eq 401
+      end
+    end
+
+    context "with campaign with no domain restriction" do
+      let(:campaign) { create :visual_campaign, :active, domains: "" }
+
+      before do
+        request.headers['Origin'] = "http://another-website.com"
+      end
+
+      it 'renders okay' do
+        get :show, key: campaign.output_key, format: :json
+        response.should be_ok
       end
     end
   end

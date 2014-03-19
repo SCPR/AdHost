@@ -12,6 +12,6 @@ class VisualCampaign < ActiveRecord::Base
 
 
   def allowed_domains
-    self.domains.split(",")
+    self.domains.split(",").map(&:strip)
   end
 end

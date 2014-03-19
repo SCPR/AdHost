@@ -10,12 +10,15 @@ module Api::Public::V1
         render_not_found and return false
       end
 
-      if !@visual_campaign.allowed_domains.find { |d| d == @origin.host }
-        render_unauthorized and return false
-      else
-        allow_origin
+      # TODO This should be able to select a campaign which has a more
+      # specific domain restriction.
+      if @visual_campaign.allowed_domains.present?
+        if !@visual_campaign.allowed_domains.find { |d| d == @origin.host }
+          render_unauthorized and return false
+        end
       end
 
+      allow_origin
       respond_with @visual_campaign
     end
 
