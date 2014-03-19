@@ -41,6 +41,7 @@ describe "Preroll Campaigns" do
     context "valid record" do
       it "shows a success message and redirects to the edit page" do
         fill_in "preroll_campaign_title", with: "Cool Campaign"
+        fill_in "preroll_campaign_output_key", with: "kpcclive"
         click_button "Save"
 
         current_path.should eq edit_outpost_preroll_campaign_path(PrerollCampaign.last)
@@ -51,6 +52,7 @@ describe "Preroll Campaigns" do
     context "invalid record" do
       it "renders the new template and shows error messages" do
         fill_in "preroll_campaign_title", with: ""
+        fill_in "preroll_campaign_output_key", with: ""
         click_button "Save"
 
         current_path.should eq outpost_preroll_campaigns_path # "create" action

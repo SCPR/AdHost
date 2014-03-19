@@ -30,6 +30,7 @@ class PrerollCampaign < ActiveRecord::Base
   }
 
   validates :title, presence: true
+  validates :output_key, presence: true
 
   mount_uploader :master_file, AudioUploader
   after_update :clear_encodings, :if => -> { self.master_file_changed? }
