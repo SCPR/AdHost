@@ -43,37 +43,37 @@ describe PrerollCampaign do
 
   describe '#active?' do
     it "is true if it's currently live" do
-      campaign = create :preroll_campaign, :active
+      campaign = build :preroll_campaign, :active
       campaign.active?.should eq true
     end
 
     it "if false if it's not live" do
-      campaign = create :preroll_campaign, :inactive
+      campaign = build :preroll_campaign, :inactive
       campaign.active?.should eq false
     end
 
     it "is false if no start or end time" do
-      campaign = create :preroll_campaign, starts_at: nil, ends_at: nil
+      campaign = build :preroll_campaign, starts_at: nil, ends_at: nil
       campaign.active?.should eq false
     end
 
     it "is true if only end time and we're before it" do
-      campaign = create :preroll_campaign, starts_at: nil, ends_at: 1.day.from_now
+      campaign = build :preroll_campaign, starts_at: nil, ends_at: 1.day.from_now
       campaign.active?.should eq true
     end
 
     it "is true if only start time and we're after it" do
-      campaign = create :preroll_campaign, starts_at: 1.day.ago, ends_at: nil
+      campaign = build :preroll_campaign, starts_at: 1.day.ago, ends_at: nil
       campaign.active?.should eq true
     end
 
     it "is false if only start time and we're before it" do
-      campaign = create :preroll_campaign, starts_at: 1.day.from_now, ends_at: nil
+      campaign = build :preroll_campaign, starts_at: 1.day.from_now, ends_at: nil
       campaign.active?.should eq false
     end
 
     it "is false if only end time and we're after it" do
-      campaign = create :preroll_campaign, starts_at: nil, ends_at: 1.day.ago
+      campaign = build :preroll_campaign, starts_at: nil, ends_at: 1.day.ago
       campaign.active?.should eq false
     end
   end
