@@ -12,7 +12,7 @@ guard 'resque', task: 'environment resque:work', environment: 'development' do
   watch(%r{^config/(.+)\.rb$})
 end
 
-guard :rspec, cli: "-c -f progress --fail-fast", all_on_start: false, all_after_pass: false do
+guard :rspec, cmd: "rspec -c -f progress --fail-fast", all_on_start: false, all_after_pass: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^app/(.+)\.rb$})                           { |m| "spec/#{m[1]}_spec.rb" }
   watch(%r{^app/controllers/(.+)_(controller)\.rb$})  { |m| ["spec/#{m[2]}s/#{m[1]}_#{m[2]}_spec.rb"] }
