@@ -14,5 +14,16 @@
 <% end %>
 
 <%= form_block "Markup" do %>
-    <%= f.input :markup, label: false, input_html: { style: "width: 100%; font-family: monospace;" } %>
+  <div style="border:1px solid #ddd;">
+    <%= f.text_area :markup %>
+  </div>
 <% end %>
+
+<script>
+  var editor = CodeMirror.fromTextArea(document.getElementById('visual_campaign_markup'), {
+    mode: 'xml',
+    htmlMode: true,
+    lineNumbers: true,
+    theme: "eclipse"
+  });
+</script>
