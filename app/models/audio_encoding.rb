@@ -65,7 +65,7 @@ class AudioEncoding < ActiveRecord::Base
   def encode
     # we'll encode into a temp file and then move it into place
     master  = self.campaign.master_file
-    temp    = Tempfile.new('preroller')
+    temp    = Tempfile.new(['preroller', ".#{self.extension}"])
 
     begin
       master = FFMPEG::Movie.new(master.path)
