@@ -35,4 +35,5 @@ Audiobox::Application.configure do
   }
 
   config.preroller.audio_dir = "/Users/bricker/websites/kpcc/Audiobox/public/audio"
+  config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
 end
