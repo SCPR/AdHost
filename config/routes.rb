@@ -25,6 +25,8 @@ Audiobox::Application.routes.draw do
         post :upload
         post :toggle
       end
+
+      resources :audio_encodings, only: :destroy
     end
 
     resources :sessions, only: [:create, :destroy]

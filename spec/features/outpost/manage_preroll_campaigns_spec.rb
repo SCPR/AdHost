@@ -93,6 +93,39 @@ describe "Preroll Campaigns" do
     end
   end
 
+
+  describe 'encodings' do
+    before do
+      login
+
+      @preroll_campaign = create :preroll_campaign
+      @encoding = create :mp3_audio_encoding, campaign: @preroll_campaign
+
+      visit outpost_preroll_campaigns_path
+      click_link "Edit"
+    end
+
+    describe 'index' do
+      it "lists the encodings" do
+        within("#form-block-encodings") do
+          page.should have_content @encoding.stream_key
+        end
+      end
+    end
+
+    describe 'destroying' do
+      it "destroys the encodings and shows a success message" do
+        click_link "Delete"
+        page.should have_content "Deleted Audio Encoding"
+
+        within("#form-block-encodings") do
+          page.should_not have_content @encoding.stream_key
+        end
+      end
+    end
+  end
+
+
   describe "destroying" do
     before do
       login

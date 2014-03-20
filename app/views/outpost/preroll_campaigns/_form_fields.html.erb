@@ -33,6 +33,7 @@
             <th>Stream Key</th>
             <th>Created At</th>
             <th>File path</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +42,7 @@
               <td><%= encoding.stream_key %></td>
               <td><%= display_datetime(encoding.created_at) %></td>
               <td><%= encoding.path %></td>
+              <td><%= link_to "Delete", outpost_preroll_campaign_audio_encoding_path(@record, encoding), method: :delete, data: { confirm: "Are you sure you want to delete the encoding for #{encoding.stream_key}?\nUnsaved data will be lost." }, class: "btn btn-danger btn-small" %></td>
             </tr>
           <% end %>
         </tbody>
