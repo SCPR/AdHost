@@ -26,5 +26,5 @@ dependencies:
         make install && cd ../ &&
         wget http://ffmpeg.org/releases/ffmpeg-2.1.4.tar.bz2 && tar -xjpf ffmpeg-2.1.4.tar.bz2 && cd ffmpeg-2.1.4 &&
         ./configure --extra-cflags="-I$HOME/ffmpeg_build/fdkaac/include" --extra-ldflags="-L$HOME/ffmpeg_build/fdkaac/lib" --prefix=$HOME/ffmpeg_build/ffmpeg --enable-gpl --enable-nonfree --enable-libfaac --enable-libmp3lame --enable-libfdk-aac &&
-        make install
+        make install;
         fi
