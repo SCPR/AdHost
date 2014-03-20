@@ -24,7 +24,7 @@ class MP3AudioEncoding < AudioEncoding
 
   def transcode(master, temp)
     master.transcode(temp, {
-      :custom => "-f mp3 -reservoir 0 " \
+      :custom => "-reservoir 0 " \
                  "-metadata title=\"#{self.campaign.title.gsub('"','\"')}\"",
       :audio_codec       => CODEC,
       :audio_bitrate     => self.bitrate,

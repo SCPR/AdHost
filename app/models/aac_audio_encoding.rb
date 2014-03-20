@@ -25,8 +25,7 @@ class AACAudioEncoding < AudioEncoding
 
   def transcode(master, temp)
     master.transcode(temp.path, {
-      :custom => "-f mp4 " \
-                 "-metadata title=\"#{self.campaign.title.gsub('"','\"')}\"",
+      :custom => "-metadata title=\"#{self.campaign.title.gsub('"','\"')}\"",
       :audio_codec       => CODEC,
       :audio_profile     => PROFILE,
       :audio_sample_rate => self.sample_rate,
