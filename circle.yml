@@ -18,11 +18,13 @@ dependencies:
     - "~/ffmpeg_build"
   pre:
     - >
-        cd ~ && mkdir ffmpeg_build && cd ffmpeg_build && mkdir ffmpeg && mkdir fdkaac && mkdir src && cd src &&
+        if [ ! -d $HOME/ffmpeg_build ]; then
+        cd $HOME && mkdir ffmpeg_build && cd ffmpeg_build && mkdir ffmpeg && mkdir fdkaac && mkdir src && cd src &&
         wget https://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.3.tar.gz && tar xfz fdk-aac-0.1.3.tar.gz && cd fdk-aac-0.1.3 &&
         autoreconf -fvi &&
-        ./configure --prefix=/home/ubuntu/ffmpeg_build/fdkaac --disable-shared &&
+        ./configure --prefix=$HOME/ffmpeg_build/fdkaac --disable-shared &&
         make install && cd ../ &&
         wget http://ffmpeg.org/releases/ffmpeg-2.1.4.tar.bz2 && tar -xjpf ffmpeg-2.1.4.tar.bz2 && cd ffmpeg-2.1.4 &&
-        ./configure --extra-cflags="-I$HOME/ffmpeg_build/fdkaac/include" --extra-ldflags="-L$HOME/ffmpeg_build/fdkaac/lib" --prefix=/home/ubuntu/ffmpeg_build/ffmpeg --enable-gpl --enable-nonfree --enable-libfaac --enable-libmp3lame --enable-libfdk-aac &&
+        ./configure --extra-cflags="-I$HOME/ffmpeg_build/fdkaac/include" --extra-ldflags="-L$HOME/ffmpeg_build/fdkaac/lib" --prefix=$HOME/ffmpeg_build/ffmpeg --enable-gpl --enable-nonfree --enable-libfaac --enable-libmp3lame --enable-libfdk-aac &&
         make install
+        fi
