@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320092626) do
+ActiveRecord::Schema.define(version: 20140320101243) do
 
   create_table "preroller_audio_encodings", force: true do |t|
     t.integer  "campaign_id", null: false
