@@ -36,13 +36,14 @@ dependencies:
         wget http://ffmpeg.org/releases/ffmpeg-2.1.4.tar.bz2 &&
         tar -xjpf ffmpeg-2.1.4.tar.bz2 &&
         cd ffmpeg-2.1.4 &&
-        ./configure --extra-cflags="-I$FFMPEG_DIR/fdkaac/include"
-                    --extra-ldflags="-L$FFMPEG_DIR/fdkaac/lib"
-                    --prefix="$FFMPEG_DIR/ffmpeg"
-                    --enable-gpl
-                    --enable-nonfree
-                    --enable-libfaac
-                    --enable-libmp3lame
-                    --enable-libfdk-aac &&
+        ./configure
+        --extra-cflags="-I$FFMPEG_DIR/fdkaac/include"
+        --extra-ldflags="-L$FFMPEG_DIR/fdkaac/lib"
+        --prefix="$FFMPEG_DIR/ffmpeg"
+        --enable-gpl
+        --enable-nonfree
+        --enable-libfaac
+        --enable-libmp3lame
+        --enable-libfdk-aac &&
         make install;
         fi
