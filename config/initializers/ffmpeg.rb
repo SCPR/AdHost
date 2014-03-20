@@ -1,3 +1,1 @@
-if (Rails.env == "scprdev" || Rails.env == "production")
-  FFMPEG.ffmpeg_binary = "/usr/local/bin/ffmpeg"
-end
+FFMPEG.ffmpeg_binary = Rails.application.config.ffmpeg_binary || 'ffmpeg'

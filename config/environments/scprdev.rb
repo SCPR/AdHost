@@ -75,4 +75,5 @@ Audiobox::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   config.preroller.audio_dir = "/web/audiobox/shared/audio"
+  config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
 end

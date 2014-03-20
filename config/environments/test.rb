@@ -35,5 +35,5 @@ Audiobox::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.preroller.audio_dir = File.expand_path("public/audio/test")
-
+  config.ffmpeg_binary = "ffmpeg"
 end

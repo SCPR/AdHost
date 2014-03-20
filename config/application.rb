@@ -20,5 +20,6 @@ module Audiobox
     config.secrets = YAML.load_file("#{Rails.root}/config/app_config.yml")
 
     config.streamadmin.cube_server = "http://media.scpr.org:1081"
+    config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
   end
 end
