@@ -31,7 +31,7 @@ describe AudioEncoding do
 
         encoding.path.should eq File.join(
           Rails.application.config.preroller.audio_dir,
-          "#{campaign.id}-123.m4a")
+          "#{campaign.id}-123.aac")
       end
     end
 
@@ -57,7 +57,7 @@ describe AudioEncoding do
 
         encoding.path.should be_present
         File.exists?(encoding.path).should be_true
-        File.extname(encoding.path).should eq '.m4a'
+        File.extname(encoding.path).should eq '.aac'
 
         encoding.reload.fingerprint.should be_present
       end
