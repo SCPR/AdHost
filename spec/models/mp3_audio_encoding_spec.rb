@@ -7,7 +7,7 @@ describe MP3AudioEncoding do
   its(:profile) { should be_nil }
   its(:bitrate) { should eq 128 }
   its(:codec) { should eq 'mp3' }
-  its(:extension) { should eq 'mp3' }
+  its(:extension) { should eq MP3AudioEncoding::EXTENSION }
   its(:channels) { should eq 2 }
   its(:sample_rate) { should eq 44100 }
 end
