@@ -7,7 +7,7 @@ describe AACAudioEncoding do
   its(:profile) { should eq 2 }
   its(:bitrate) { should be_nil }
   its(:codec) { should eq 'aac' }
-  its(:extension) { should eq 'mp4' }
+  its(:extension) { should eq AACAudioEncoding::EXTENSION }
   its(:channels) { should eq 1 }
   its(:sample_rate) { should eq 44100 }
 end

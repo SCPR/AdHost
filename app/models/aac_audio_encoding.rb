@@ -1,7 +1,7 @@
 class AACAudioEncoding < AudioEncoding
   CODEC       = 'libfdk_aac'
   PROFILE     = 'mpeg2_aac_low'
-  EXTENSION   = "mp4"
+  EXTENSION   = "m4a"
 
 
   def bitrate
