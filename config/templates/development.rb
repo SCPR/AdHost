@@ -34,6 +34,6 @@ Audiobox::Application.configure do
     :remote_dir  => "~scprdb"
   }
 
-  config.preroller.audio_dir = "/Users/bricker/websites/kpcc/Audiobox/public/audio"
+  config.preroller.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
   config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
 end
