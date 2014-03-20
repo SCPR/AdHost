@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'thread_safe', '~> 0.2.0'
+
 gem 'rails', '~> 4.0.3'
 gem 'mysql2'
 gem 'bcrypt-ruby', '~> 3.0.0'
@@ -16,7 +18,7 @@ gem 'outpost-cms', github: 'SCPR/outpost'
 gem 'select2-rails', '3.4.1'
 
 gem 'simple_form', '~> 3.0.0'
-gem 'kaminari', github: "amatsuda/kaminari"
+gem 'kaminari'
 gem "streamio-ffmpeg", git: "git://github.com/SCPR/streamio-ffmpeg.git"
 
 

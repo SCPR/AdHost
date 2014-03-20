@@ -15,14 +15,6 @@ GIT
     streamio-ffmpeg (0.8.5)
 
 GIT
-  remote: git://github.com/amatsuda/kaminari.git
-  revision: 1f577d9af0c7cef2a3f1d5476488cc1f63882cff
-  specs:
-    kaminari (0.15.1)
-      actionpack (>= 3.0.0)
-      activesupport (>= 3.0.0)
-
-GIT
   remote: git://github.com/bricker/dbsync.git
   revision: 18d0f8cae309d6c028a381c8ec355dfabf1091b3
   specs:
@@ -139,6 +131,9 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     libv8 (3.16.14.3)
     listen (2.7.1)
       celluloid (>= 0.15.2)
@@ -154,7 +149,7 @@ GEM
     mini_portile (0.5.2)
     minitest (4.7.5)
     mono_logger (1.1.0)
-    multi_json (1.9.0)
+    multi_json (1.9.2)
     mysql2 (0.3.15)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
@@ -267,7 +262,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.3.0)
+    thread_safe (0.2.0)
       atomic (>= 1.1.7, < 2)
     tilt (1.4.1)
     timers (1.1.0)
@@ -305,7 +300,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 2.0.4)
   jquery-rails (~> 3.1.0)
-  kaminari!
+  kaminari
   mysql2
   newrelic_rpm
   outpost-cms!
@@ -319,5 +314,6 @@ DEPENDENCIES
   simple_form (~> 3.0.0)
   streamio-ffmpeg!
   therubyracer
+  thread_safe (~> 0.2.0)
   uglifier (>= 1.0.3)
   webmock
