@@ -11,40 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319021225) do
+ActiveRecord::Schema.define(version: 20140320092626) do
 
   create_table "preroller_audio_encodings", force: true do |t|
-    t.integer  "campaign_id",                 null: false
+    t.integer  "campaign_id", null: false
     t.string   "stream_key"
     t.string   "fingerprint"
-    t.string   "extension"
-    t.integer  "size"
-    t.integer  "duration"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "type"
-    t.integer  "sample_rate"
-    t.integer  "bitrate"
-    t.integer  "profile"
-    t.integer  "channels"
-    t.boolean  "is_master",   default: false
   end
 
   add_index "preroller_audio_encodings", ["campaign_id"], name: "index_preroller_audio_encodings_on_campaign_id", using: :btree
-  add_index "preroller_audio_encodings", ["is_master"], name: "index_preroller_audio_encodings_on_is_master", using: :btree
-  add_index "preroller_audio_encodings", ["sample_rate", "bitrate", "channels"], name: "audio_metadata", using: :btree
+  add_index "preroller_audio_encodings", ["stream_key"], name: "index_preroller_audio_encodings_on_stream_key", using: :btree
+  add_index "preroller_audio_encodings", ["type"], name: "index_preroller_audio_encodings_on_type", using: :btree
 
   create_table "preroller_campaigns", force: true do |t|
-    t.string   "title",                       null: false
-    t.string   "metatitle"
-    t.boolean  "active",      default: false, null: false
+    t.string   "title",       null: false
     t.datetime "starts_at"
     t.datetime "ends_at"
-    t.integer  "output_id"
     t.string   "path_filter"
-    t.string   "ua_filter"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "output_key"
     t.string   "master_file"
   end
@@ -54,21 +42,11 @@ ActiveRecord::Schema.define(version: 20140319021225) do
   add_index "preroller_campaigns", ["path_filter"], name: "index_preroller_campaigns_on_path_filter", using: :btree
   add_index "preroller_campaigns", ["starts_at", "ends_at"], name: "index_preroller_campaigns_on_starts_at_and_ends_at", using: :btree
 
-  create_table "preroller_outputs", force: true do |t|
-    t.string   "key",         null: false
-    t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "preroller_outputs", ["key"], name: "index_preroller_outputs_on_key", using: :btree
-
   create_table "visual_campaigns", force: true do |t|
     t.string   "title"
     t.string   "output_key"
     t.text     "markup"
     t.string   "domains"
-    t.boolean  "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "starts_at"
