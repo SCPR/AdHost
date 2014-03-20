@@ -23,7 +23,7 @@ class MP3AudioEncoding < AudioEncoding
   private
 
   def transcode(master, temp)
-    master.transcode(temp, {
+    master.transcode(temp.path, {
       :custom => "-reservoir 0 " \
                  "-metadata title=\"#{self.campaign.title.gsub('"','\"')}\"",
       :audio_codec       => CODEC,
