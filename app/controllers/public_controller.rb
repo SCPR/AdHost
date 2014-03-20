@@ -25,9 +25,6 @@ class PublicController < ApplicationController
     @campaign ||= campaigns.select { |c| c.path_filter.blank? }.sample
 
     if @campaign
-      # key format: (codec)-(samplerate)-(channels)-(bitrate)-(mono/stereo)
-      # For instance: mp3-44100-16-64-m, aac-44100-16-48-m, etc
-
       if file = @campaign.file_for_stream_key(params[:stream_key])
         # Got it... send a file
         send_file file, :disposition => 'inline' and return
