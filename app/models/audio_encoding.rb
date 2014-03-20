@@ -31,16 +31,12 @@ class AudioEncoding < ActiveRecord::Base
     key_parts[0]
   end
 
-  def extension
-    # These may not always be the same.
-    # For example, we may want an AAC encoding which returns an mp4 file
-    # or something. In that cas we can just have a simple hash map defined
-    # somewhere.
-    self.codec
-  end
-
   def sample_rate
     key_parts[1].to_i
+  end
+
+  def extension
+    nil
   end
 
   def profile
@@ -67,34 +63,28 @@ class AudioEncoding < ActiveRecord::Base
 
 
   def encode
-    master = self.campaign.master_file
-
     # we'll encode into a temp file and then move it into place
-    f = Tempfile.new(['preroller', ".#{self.extension}"])
+    master  = self.campaign.master_file
+    temp    = Tempfile.new('preroller')
 
     begin
-      mfile = FFMPEG::Movie.new(master.path)
-      mfile.transcode(f.path, transcode_options.merge({
-        :custom => %Q! -metadata title="#{self.campaign.title.gsub('"','\"')}"!,
-        :audio_sample_rate => self.sample_rate,
-        :audio_channels    => self.channels
-      }))
+      master = FFMPEG::Movie.new(master.path)
+      transcode(master, temp)
 
-      # make sure the file we created is valid...
-      newfile = FFMPEG::Movie.new(f.path)
-      if newfile.valid?
-        self.fingerprint = SecureRandom.hex(16)
+      transcoded = FFMPEG::Movie.new(temp.path)
+      return if !transcoded.valid?
 
-        # now write it into place in our final location
-        File.open(self.path, 'w', encoding: "ascii-8bit") do |ff|
-          ff << f.read
-        end
+      self.fingerprint = SecureRandom.hex(16)
 
-        self.save!
+      # now write it into place in our final location
+      File.open(self.path, 'w', encoding: "ascii-8bit") do |f|
+        f << temp.read
       end
+
+      self.save!
     ensure
-      f.close
-      f.unlink
+      temp.close
+      temp.unlink
     end
 
     return true
@@ -102,6 +92,7 @@ class AudioEncoding < ActiveRecord::Base
 
 
   private
+
 
   def key_parts
     @key_parts ||= self.stream_key.split("-")

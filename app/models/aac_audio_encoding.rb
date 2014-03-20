@@ -1,6 +1,7 @@
 class AACAudioEncoding < AudioEncoding
-  CODEC   = 'libfdk_aac'
-  PROFILE = 'mpeg2_aac_low'
+  CODEC       = 'libfdk_aac'
+  PROFILE     = 'mpeg2_aac_low'
+  EXTENSION   = "mp4"
 
 
   def bitrate
@@ -15,13 +16,21 @@ class AACAudioEncoding < AudioEncoding
     key_parts[3].to_i
   end
 
+  def extension
+    EXTENSION
+  end
+
 
   private
 
-  def transcode_options
-    @transcode_options ||= {
-      :audio_codec   => CODEC,
-      :audio_profile => PROFILE,
-    }
+  def transcode(master, temp)
+    master.transcode(temp.path, {
+      :custom => "-f mp4 " \
+                 "-metadata title=\"#{self.campaign.title.gsub('"','\"')}\"",
+      :audio_codec       => CODEC,
+      :audio_profile     => PROFILE,
+      :audio_sample_rate => self.sample_rate,
+      :audio_channels    => self.channels
+    })
   end
 end

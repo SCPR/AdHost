@@ -24,14 +24,14 @@ describe AudioEncoding do
     context 'with fingerprint' do
       it 'returns the path to the audio file' do
         campaign = create :campaign
-        encoding = build :audio_encoding,
+        encoding = build :aac_audio_encoding,
           :campaign    => campaign,
           :stream_key  => stream_key,
           :fingerprint => "123"
 
         encoding.path.should eq File.join(
           Rails.application.config.preroller.audio_dir,
-          "#{campaign.id}-123.mp3")
+          "#{campaign.id}-123.mp4")
       end
     end
 
@@ -57,7 +57,7 @@ describe AudioEncoding do
 
         encoding.path.should be_present
         File.exists?(encoding.path).should be_true
-        File.extname(encoding.path).should eq '.aac'
+        File.extname(encoding.path).should eq '.mp4'
 
         encoding.reload.fingerprint.should be_present
       end
