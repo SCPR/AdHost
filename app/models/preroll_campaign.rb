@@ -48,7 +48,7 @@ class PrerollCampaign < ActiveRecord::Base
       if VALID_STREAM_KEYS.find { |regex| key.match(regex) }
         return key
       else
-        raise InvalidAudioError, key
+        raise InvalidAudioError, "Invalid stream key: #{key}"
       end
     end
   end

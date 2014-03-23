@@ -35,7 +35,8 @@ describe PrerollCampaign do
       it "raises InvalidAudioError for #{key}" do
         -> {
           PrerollCampaign.verify_stream_key(key)
-        }.should raise_error PrerollCampaign::InvalidAudioError, key
+        }.should raise_error PrerollCampaign::InvalidAudioError,
+          "Invalid stream key: #{key}"
       end
     end
   end
@@ -106,7 +107,8 @@ describe PrerollCampaign do
     it 'verifies the stream key and raises if invalid' do
       -> {
         campaign.file_for_stream_key("nope-nope-nope")
-      }.should raise_error PrerollCampaign::InvalidAudioError, "nope-nope-nope"
+      }.should raise_error PrerollCampaign::InvalidAudioError,
+        "Invalid stream key: nope-nope-nope"
     end
   end
 
