@@ -119,7 +119,10 @@ describe PublicController do
 
   describe 'GET listeners' do
     before do
-      Net::HTTP.stub(:get) { load_fixture('cube_stats.json') }
+      Rails.cache.write("adhost:stream_stats",
+        JSON.parse(load_fixture("sm_stats.json")))
+
+      Rails.cache.write("adhost:stream_stats:last_cache", Time.now.to_i)
     end
 
     render_views
@@ -128,7 +131,9 @@ describe PublicController do
       get :listeners, format: :xml
 
       response.headers['Content-Type'].should match /xml/
-      response.body.should match /STREAMINGPLAYERS/
+      # 793 is the total listeners in the fixture
+      response.body.should match %r|<STREAMINGPLAYERS>793</STREAMINGPLAYERS>|
+      response.body.should match /TSEPOCH/
     end
   end
 end

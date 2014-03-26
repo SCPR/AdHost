@@ -1,0 +1,74 @@
+[
+  {
+    "id": "kpcclive",
+    "sources": [
+      {
+        "source": "Icecast (63.237.174.130:49383)",
+        "connected": true,
+        "url": "63.237.174.130:49383",
+        "streamKey": "mp3-44100-64-m",
+        "uuid": "98955975-64ec-451c-a879-fc20b464245c"
+      }
+    ],
+    "listeners": 791,
+    "rewind": 3601,
+    "vitals": {
+      "streamKey": "mp3-44100-64-m",
+      "framesPerSec": 38.28125,
+      "emitDuration": 0.5
+    },
+    "key": "kpcclive",
+    "monitored": true,
+    "metaTitle": "89.3 KPCC, Southern California Public Radio",
+    "format": "mp3",
+    "host": "live.scpr.org",
+    "source_password": "mvw90evswe9h",
+    "preroll": "http://audiobox.scprdev.org/pre/p",
+    "fallback": "",
+    "meta_interval": 32768,
+    "max_buffer": 4194304,
+    "seconds": 3600,
+    "burst": 30,
+    "acceptSourceMeta": false,
+    "log_minutes": true,
+    "root_route": true,
+    "metaUrl": "",
+    "preroll_key": "kpcclive"
+  },
+  {
+    "id": "aac",
+    "sources": [
+      {
+        "source": "Icecast (63.237.174.130:49388)",
+        "connected": true,
+        "url": "63.237.174.130:49388",
+        "streamKey": "aac-44100-2-1",
+        "uuid": "8cc2e43b-e514-4c42-bb2f-02f83a29f39c"
+      }
+    ],
+    "listeners": 2,
+    "rewind": 3005,
+    "vitals": {
+      "streamKey": "aac-44100-2-1",
+      "framesPerSec": 43.06640625,
+      "emitDuration": 0.5
+    },
+    "key": "aac",
+    "monitored": true,
+    "metaTitle": "89.3 KPCC, Southern California Public Radio",
+    "seconds": 3600,
+    "format": "aac",
+    "host": "live.scpr.org",
+    "source_password": "mvw90evswe9h",
+    "preroll": "http://audiobox.scprdev.org/pre/p",
+    "preroll_key": "kpcclive",
+    "meta_interval": 32768,
+    "max_buffer": 4194304,
+    "burst": 30,
+    "fallback": null,
+    "acceptSourceMeta": false,
+    "log_minutes": true,
+    "metaUrl": "",
+    "root_route": false
+  }
+]

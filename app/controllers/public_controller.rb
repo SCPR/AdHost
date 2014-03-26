@@ -36,10 +36,9 @@ class PublicController < ApplicationController
 
 
   def listeners
-    uri = URI("#{Rails.application.config.streamadmin.cube_server}" \
-      "/1.0/metric?expression=sum(stream_minutes(duration))/60&step=6e4&limit=1")
+    stats = Rails.cache.read("adhost:stream_stats")
 
-    json = Net::HTTP.get(uri)
-    @response = JSON.parse(json)
+    @time = Rails.cache.read("adhost:stream_stats:last_cache").to_i
+    @listeners = stats.reduce(0) { |sum, json| sum + json['listeners'].to_i }
   end
 end
