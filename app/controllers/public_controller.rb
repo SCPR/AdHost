@@ -38,6 +38,13 @@ class PublicController < ApplicationController
   def listeners
     stats = Rails.cache.read("adhost:stream_stats")
 
+    if !stats
+      render :xml => { code: 503, error: "Temporarily unavailable" },
+             :status => :service_unavailable
+
+      return
+    end
+
     @time = Rails.cache.read("adhost:stream_stats:last_cache").to_i
     @listeners = stats.reduce(0) { |sum, json| sum + json['listeners'].to_i }
   end

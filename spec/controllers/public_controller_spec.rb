@@ -118,16 +118,21 @@ describe PublicController do
   end
 
   describe 'GET listeners' do
-    before do
+    render_views
+
+    it "renders a 503 if cache is empty" do
+      get :listeners, format: :xml
+
+      response.status.should eq 503
+      response.body.should match /unavailable/
+    end
+
+    it "returns the listener stats as JSON" do
       Rails.cache.write("adhost:stream_stats",
         JSON.parse(load_fixture("sm_stats.json")))
 
       Rails.cache.write("adhost:stream_stats:last_cache", Time.now.to_i)
-    end
 
-    render_views
-
-    it "returns the listener stats as JSON" do
       get :listeners, format: :xml
 
       response.headers['Content-Type'].should match /xml/
