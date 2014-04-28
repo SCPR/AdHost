@@ -72,6 +72,7 @@ describe AudioEncoding do
         encoding.path.should be_present
         File.exists?(encoding.path).should be_true
         File.extname(encoding.path).should eq '.mp3'
+        File.open(encoding.path).size.should be > 0
 
         encoding.reload.fingerprint.should be_present
       end
