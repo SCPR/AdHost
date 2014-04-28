@@ -76,6 +76,7 @@ class AudioEncoding < ActiveRecord::Base
 
       self.fingerprint = SecureRandom.hex(16)
 
+      temp.rewind
       # now write it into place in our final location
       File.open(self.path, 'w', encoding: "ascii-8bit") do |f|
         f << temp.read
