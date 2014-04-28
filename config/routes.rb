@@ -15,9 +15,9 @@ Audiobox::Application.routes.draw do
 
   get "/stream/listeners" => "public#listeners"
 
-  namespace :outpost do
-    root to: 'home#index'
+  mount Outpost::Engine, at: 'outpost'
 
+  namespace :outpost do
     resources :visual_campaigns
 
     resources :preroll_campaigns do
@@ -29,9 +29,7 @@ Audiobox::Application.routes.draw do
       resources :audio_encodings, only: :destroy
     end
 
-    resources :sessions, only: [:create, :destroy]
-    get 'login' => 'sessions#new', as: :login
-    get 'logout' => 'sessions#destroy', as: :logout
+    get "*path" => 'errors#not_found'
   end
 
   root to: 'outpost/sessions#new'
