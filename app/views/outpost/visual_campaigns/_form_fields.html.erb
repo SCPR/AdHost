@@ -37,7 +37,7 @@
 
 <%= form_block "Cookies" do %>
   <div class="alert alert-info">
-    The client may not choose to honor cookies or these fields. These fields are just suggestions for the client.
+    The client may choose not to honor cookies or these fields. These fields are just suggestions for the client.
   </div>
 
   <%= f.input :cookie_key, hint: "The key for the cookie. Should be url-safe.<br />This should be unique for different campaigns. If you want to force-expire a cookie, just change this attribute.<br />Example: ctg2014-adClosed".html_safe %>
