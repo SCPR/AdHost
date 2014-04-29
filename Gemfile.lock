@@ -313,6 +313,5 @@ DEPENDENCIES
   simple_form (~> 3.0.0)
   streamio-ffmpeg!
   therubyracer
-  thread_safe (~> 0.2.0)
   uglifier (>= 1.0.3)
   webmock

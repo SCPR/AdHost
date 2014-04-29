@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'thread_safe', '~> 0.2.0'
-
 gem 'rails', '~> 4.0.3'
 gem 'mysql2'
 gem 'bcrypt-ruby', '~> 3.0.0'
