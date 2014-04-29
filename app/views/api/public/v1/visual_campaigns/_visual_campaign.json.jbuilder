@@ -7,4 +7,7 @@ json.cache! [Api::Public::V1::VERSION, "v1", visual_campaign] do
   json.markup      visual_campaign.markup
   json.updated_at  visual_campaign.updated_at
   json.created_at  visual_campaign.created_at
+
+  json.cookie_key       visual_campaign.cookie_key.present? ? visual_campaign.cookie_key : nil
+  json.cookie_ttl_hours visual_campaign.cookie_ttl_hours
 end

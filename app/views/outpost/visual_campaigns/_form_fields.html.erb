@@ -4,19 +4,14 @@
     <%= f.input :domains, hint: "Comma-separated list of domains to allow access to this campaign.<br />Common examples: www.scpr.org, audiobox.scpr.org, scprdev.org<br /><strong>If you leave this blank, it will load from any domain.</strong>".html_safe %>
 <% end %>
 
-<%= form_block "Scheduling" do %>
-    <div class="alert alert-info">
-        To mark this campaign as inactive, leave these fields blank.<br />
-        Setting one or both will automatically activate/deactivate this campaign based on these times.
-    </div>
-
-    <%= f.input :starts_at, include_blank: true %>
-    <%= f.input :ends_at, include_blank: true %>
-<% end %>
-
 <%= form_block "Markup" do %>
   <div style="border:1px solid #ddd;">
     <%= f.text_area :markup %>
+  </div>
+
+  <br>
+  <div class="alert alert-info">
+    Add a <code>.campaign-hide</code> element to the markup to allow a user to hide the campaign and set a cookie. The interaction and cookie are handled by scpr.org, all you need to do is add the markup for the element.
   </div>
 <% end %>
 
@@ -29,3 +24,22 @@
     theme: "eclipse"
   });
 </script>
+
+<%= form_block "Scheduling" do %>
+    <div class="alert alert-info">
+        To mark this campaign as inactive, leave these fields blank.<br />
+        Setting one or both will automatically activate/deactivate this campaign based on these times.
+    </div>
+
+    <%= f.input :starts_at, include_blank: true %>
+    <%= f.input :ends_at, include_blank: true %>
+<% end %>
+
+<%= form_block "Cookies" do %>
+  <div class="alert alert-info">
+    The client may not choose to honor cookies or these fields. These fields are just suggestions for the client.
+  </div>
+
+  <%= f.input :cookie_key, hint: "The key for the cookie. Should be url-safe.<br />This should be unique for different campaigns. If you want to force-expire a cookie, just change this attribute.<br />Example: ctg2014-adClosed".html_safe %>
+  <%= f.input :cookie_ttl_hours, label: "Cookie TTL Hours", hint: "The number of HOURS that the cookie should be valid for once set. After this number of hours.<br />Note that for most clients, an empty TTL means the cookie should expire at the end of the sessions (eg. when the browser is closed).".html_safe %>
+<% end %>

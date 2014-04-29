@@ -27,7 +27,9 @@ class Outpost::VisualCampaignsController < Outpost::ResourceController
       :markup,
       :domains,
       :starts_at,
-      :ends_at
+      :ends_at,
+      :cookie_key,
+      :cookie_ttl_hours
     )
   end
 end

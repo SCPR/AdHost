@@ -33,6 +33,8 @@ describe Api::Public::V1::VisualCampaignsController do
         json["visual_campaign"]["title"].should eq campaign.title.as_json
         json["visual_campaign"]["starts_at"].should eq campaign.starts_at.xmlschema
         json["visual_campaign"]["ends_at"].should eq campaign.ends_at.xmlschema
+        json["visual_campaign"]["cookie_key"].should eq campaign.cookie_key.as_json
+        json["visual_campaign"]["cookie_ttl_hours"].should eq campaign.cookie_ttl_hours.as_json
       end
 
       it "selects a random campaign if there are multiple with the same key" do

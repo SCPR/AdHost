@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320101243) do
+ActiveRecord::Schema.define(version: 20140429192259) do
 
   create_table "preroller_audio_encodings", force: true do |t|
     t.integer  "campaign_id", null: false
@@ -42,15 +42,26 @@ ActiveRecord::Schema.define(version: 20140320101243) do
   add_index "preroller_campaigns", ["path_filter"], name: "index_preroller_campaigns_on_path_filter", using: :btree
   add_index "preroller_campaigns", ["starts_at", "ends_at"], name: "index_preroller_campaigns_on_starts_at_and_ends_at", using: :btree
 
+  create_table "preroller_outputs", force: true do |t|
+    t.string   "key",         null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "preroller_outputs", ["key"], name: "index_preroller_outputs_on_key", using: :btree
+
   create_table "visual_campaigns", force: true do |t|
     t.string   "title"
     t.string   "output_key"
     t.text     "markup"
     t.string   "domains"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.datetime "starts_at"
     t.datetime "ends_at"
+    t.string   "cookie_key"
+    t.integer  "cookie_ttl_hours"
   end
 
   add_index "visual_campaigns", ["output_key"], name: "index_visual_campaigns_on_output_key", using: :btree
