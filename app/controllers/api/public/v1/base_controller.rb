@@ -12,6 +12,10 @@ module Api::Public::V1
 
     private
 
+    def set_conditions
+      @conditions = {}
+    end
+
     def allow_origin
       response.headers.merge!({
         "Access-Control-Allow-Origin"   => request.headers['Origin'],

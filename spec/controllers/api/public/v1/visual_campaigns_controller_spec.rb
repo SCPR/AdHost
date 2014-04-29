@@ -3,6 +3,78 @@ require 'spec_helper'
 describe Api::Public::V1::VisualCampaignsController do
   render_views
 
+  describe 'index' do
+    before do
+      request.headers['Origin'] = "http://scpr.org"
+
+      @vc1 = create :visual_campaign,
+        :active,
+        :output_key   => "pushdown",
+        :domains      => "scpr.org",
+        :markup       => "<div>Pushdown Stuff</div>"
+
+      @vc2 = create :visual_campaign,
+        :active,
+        :output_key   => "homepage",
+        :domains      => "scpr.org",
+        :markup       => "<div>Homepage Stuff</div>"
+    end
+
+    it "gets multiple campaigns" do
+      get :index, keys: "pushdown,homepage", format: :json
+
+      # Order doesn't matter
+      assigns(:visual_campaigns).sort.should eq [@vc1, @vc2].sort
+
+      json = JSON.parse(response.body)
+      json["visual_campaigns"]["pushdown"]["markup"].should eq @vc1.markup.as_json
+      json["visual_campaigns"]["homepage"]["markup"].should eq @vc2.markup.as_json
+    end
+
+    it "assigns nil for blank cookie keys" do
+      get :index, keys: "pushdown", format: :json
+
+      json = JSON.parse(response.body)
+      json["visual_campaigns"]["pushdown"]["cookie_key"].should eq nil.as_json
+    end
+
+    it "only pulls active campaigns" do
+      create :visual_campaign, :inactive, output_key: "hello"
+      get :index, keys: "hello", format: :json
+
+      assigns(:visual_campaigns).should eq []
+    end
+
+
+    context 'with missing Origin' do
+      before do
+        request.headers['Origin'] = nil
+      end
+
+      it "renders a bad request and doesn't set @visual_campaign" do
+        get :index, keys: "nopenope", format: :json
+        response.should be_bad_request
+        assigns(:visual_campaigns).should be_nil
+      end
+    end
+
+
+    it "filters out campaigns which don't match the origin host" do
+      request.headers['Origin'] = "http://google.com"
+
+      vc3 = create :visual_campaign,
+        :active,
+        :output_key   => "something",
+        :domains      => "google.com",
+        :markup       => "<div>Homepage Stuff</div>"
+
+      get :index, keys: "homepage,something", format: :json
+      assigns(:visual_campaigns).should eq [vc3]
+    end
+  end
+
+
+
   describe 'show' do
     let(:campaign) {
       create :visual_campaign,

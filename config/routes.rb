@@ -8,6 +8,7 @@ Audiobox::Application.routes.draw do
           :via            => :options,
           :constraints    => { method: 'OPTIONS' }
 
+        get 'visual_campaigns' => 'visual_campaigns#index'
         get 'visual_campaigns/:key' => 'visual_campaigns#show'
       end
     end
