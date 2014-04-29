@@ -30,10 +30,8 @@ Audiobox::Application.configure do
   config.assets.debug = true
 
   config.dbsync = {
-    :filename    => "audiobox.dump",
-    :local_dir   => "#{Rails.root}/../dbdumps", # No trailing slash
-    :remote_host => "scprdb@66.226.4.229",
-    :remote_dir  => "~scprdb"
+    :local   => "#{Rails.root}/../dbdumps/audiobox.dump",
+    :remote  => "scprdb@66.226.4.229:~scprdb/audiobox.dump"
   }
 
   config.preroller.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
