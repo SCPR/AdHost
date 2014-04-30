@@ -1,4 +1,4 @@
-json.cache! [Api::Public::V1::VERSION, "v1", visual_campaign] do
+json.cache! [Api::Public::V1::VERSION, visual_campaign] do
   json.key         visual_campaign.output_key
   json.title       visual_campaign.title
   json.starts_at   visual_campaign.starts_at
