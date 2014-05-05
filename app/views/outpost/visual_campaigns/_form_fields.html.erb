@@ -41,5 +41,5 @@
   </div>
 
   <%= f.input :cookie_key, hint: "The key for the cookie. Should be url-safe.<br />This should be unique for different campaigns. If you want to force-expire a cookie, just change this attribute.<br />Example: ctg2014-adClosed".html_safe %>
-  <%= f.input :cookie_ttl_hours, label: "Cookie TTL Hours", hint: "The number of HOURS that the cookie should be valid for once set. After this number of hours.<br />Note that for most clients, an empty TTL means the cookie should expire at the end of the sessions (eg. when the browser is closed).".html_safe, input_html: { class: "tiny" } %>
+  <%= f.input :cookie_ttl_hours, label: "Cookie TTL Hours", hint: "The number of HOURS that the cookie should be valid for once set.<br />Note that for most clients, an empty TTL means the cookie should expire at the end of the sessions (eg. when the browser is closed).".html_safe, input_html: { class: "tiny" } %>
 <% end %>
