@@ -1,26 +1,8 @@
 GIT
-  remote: git://github.com/SCPR/outpost.git
-  revision: 207994de4c328be7e2656cba2f7737b38a2b36de
-  specs:
-    outpost-cms (0.0.5)
-      bcrypt-ruby (>= 3.0.0, < 4)
-      jquery-rails (~> 3.0)
-      kaminari (~> 0.15.1)
-      rails (>= 3.2, < 5)
-      select2-rails (= 3.4.1)
-
-GIT
   remote: git://github.com/SCPR/streamio-ffmpeg.git
   revision: 82ce4b3609dfd8f56945b5455d24d1b11089a175
   specs:
     streamio-ffmpeg (0.8.5)
-
-GIT
-  remote: git://github.com/bricker/dbsync.git
-  revision: 216368e97e07ea485b4d2b22e46e85662c679057
-  specs:
-    dbsync (0.3.0)
-      cocaine (>= 0.5.0, < 0.6)
 
 GEM
   remote: https://rubygems.org/
@@ -92,6 +74,8 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     database_cleaner (1.2.0)
+    dbsync (0.3.0)
+      cocaine (>= 0.5.0, < 0.6)
     diff-lcs (1.2.5)
     eco (1.0.0)
       coffee-script
@@ -160,6 +144,12 @@ GEM
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    outpost-cms (0.1.2)
+      bcrypt-ruby (>= 3.0.0, < 4)
+      jquery-rails (~> 3.0)
+      kaminari (~> 0.15.1)
+      rails (>= 3.2, < 5)
+      select2-rails (= 3.4.1)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -290,7 +280,7 @@ DEPENDENCIES
   carrierwave (~> 0.10.0)
   coffee-rails (~> 4.0.0)
   database_cleaner
-  dbsync!
+  dbsync
   eco (~> 1.0.0)
   factory_girl_rails
   guard
@@ -301,7 +291,7 @@ DEPENDENCIES
   kaminari
   mysql2
   newrelic_rpm
-  outpost-cms!
+  outpost-cms
   pry
   rails (~> 4.0.3)
   redis-rails (~> 4.0.0)

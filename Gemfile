@@ -12,8 +12,7 @@ gem 'resque', '~> 1.25.2'
 gem 'carrierwave', '~> 0.10.0'
 gem 'redis-rails', '~> 4.0.0'
 
-gem 'outpost-cms', github: 'SCPR/outpost'
-#gem 'outpost-cms', path: "#{ENV['PROJECT_HOME']}/outpost"
+gem 'outpost-cms'
 gem 'select2-rails', '3.4.1'
 
 gem 'simple_form', '~> 3.0.0'
@@ -29,7 +28,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 2.2'
 
 group :development do
-  gem "dbsync", github: 'bricker/dbsync'
+  gem "dbsync"
   gem 'guard'
   gem 'guard-resque'
   gem 'guard-rspec'
