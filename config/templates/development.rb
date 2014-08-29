@@ -9,8 +9,6 @@ AdHost::Application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
-  config.cache_store = :redis_store, "redis://localhost:6379/7"
-
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -35,7 +33,4 @@ AdHost::Application.configure do
     :strategy => :curl,
     :bin_opts => "--netrc"
   }
-
-  config.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
-  config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
 end
