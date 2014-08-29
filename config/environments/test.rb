@@ -36,6 +36,6 @@ AdHost::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  config.preroller.audio_dir = File.expand_path("public/audio/test")
+  config.audio_dir = File.expand_path("public/audio/test")
   config.ffmpeg_binary = "ffmpeg"
 end

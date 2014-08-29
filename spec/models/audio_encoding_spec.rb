@@ -30,7 +30,7 @@ describe AudioEncoding do
           :fingerprint => "123"
 
         encoding.path.should eq File.join(
-          Rails.application.config.preroller.audio_dir,
+          Rails.application.config.audio_dir,
           "#{campaign.id}-123.aac")
       end
     end

@@ -36,6 +36,6 @@ AdHost::Application.configure do
     :bin_opts => "--netrc"
   }
 
-  config.preroller.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
+  config.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
   config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
 end

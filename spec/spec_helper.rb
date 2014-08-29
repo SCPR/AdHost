@@ -52,7 +52,7 @@ RSpec.configure do |config|
 
   config.after :suite do
     FileUtils.rm(
-      Dir[Rails.root.join(Rails.application.config.preroller.audio_dir, '*')]
+      Dir[Rails.root.join(Rails.application.config.audio_dir, '*')]
     )
   end
 end

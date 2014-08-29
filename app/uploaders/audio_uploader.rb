@@ -14,7 +14,7 @@ class AudioUploader < CarrierWave::Uploader::Base
 
 
   def store_dir
-    Rails.application.config.preroller.audio_dir
+    Rails.application.config.audio_dir
   end
 
 

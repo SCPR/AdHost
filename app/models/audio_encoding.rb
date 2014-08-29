@@ -56,7 +56,7 @@ class AudioEncoding < ActiveRecord::Base
     return nil if !self.fingerprint || !self.campaign_id
 
     File.join(
-      Rails.application.config.preroller.audio_dir,
+      Rails.application.config.audio_dir,
       "#{self.campaign_id}-#{self.fingerprint}.#{self.extension}"
     )
   end

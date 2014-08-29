@@ -14,11 +14,8 @@ module AdHost
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.preroller = ActiveSupport::OrderedOptions.new
-    config.streamadmin = ActiveSupport::OrderedOptions.new
-    config.secrets = YAML.load_file("#{Rails.root}/config/app_config.yml")
+    config.secrets = YAML.load_file("#{Rails.root}/config/app_config.yml")[Rails.env]
 
-    config.streamadmin.cube_server = "http://media.scpr.org:1081"
-    config.ffmpeg_binary = "/usr/local/bin/ffmpeg"
+    config.ffmpeg_binary = config.secrets['ffmpeg_bin']"/usr/local/bin/ffmpeg"
   end
 end
