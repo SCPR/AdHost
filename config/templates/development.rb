@@ -30,8 +30,10 @@ AdHost::Application.configure do
   config.assets.debug = true
 
   config.dbsync = {
-    :local   => "#{Rails.root}/../dbdumps/audiobox.dump",
-    :remote  => "scprdb@66.226.4.229:~scprdb/audiobox.dump"
+    :local => "~/dbdumps/dbsync-adhost.sql",
+    :remote => "ftp://backups.server.org/database/adhost-latest.sql.gz",
+    :strategy => :curl,
+    :bin_opts => "--netrc"
   }
 
   config.preroller.audio_dir = "/Users/bryan/projects/AdHost/public/audio"
