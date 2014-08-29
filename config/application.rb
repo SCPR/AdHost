@@ -16,6 +16,8 @@ module AdHost
 
     config.secrets = YAML.load_file("#{Rails.root}/config/app_config.yml")[Rails.env]
 
-    config.ffmpeg_binary = config.secrets['ffmpeg_bin']"/usr/local/bin/ffmpeg"
+    config.cache_store    = :redis_store, config.secrets['cache']
+    config.audio_dir      = config.secrets['audio_dir']
+    config.ffmpeg_binary  = config.secrets['ffmpeg_bin']
   end
 end

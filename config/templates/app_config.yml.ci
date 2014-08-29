@@ -1,5 +1,9 @@
-secret_token: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-
-stream_machine:
-    user: 'xxx'
-    password: 'xxx'
+test:
+    secret_token: 84a5c4741a5064d95f9c4afd1a6456d5ea24fdc09fb5737a20b241bc0029432e9447946f87ef7f2ff326f19d3d9282999d9225cd77a11c4223b622f55e76d63c
+    cache: redis://localhost:6379/10
+    resque: redis://localhost:6379
+    audio_dir: /path/to/audio
+    ffmpeg_bin: /usr/local/bin/ffmpeg
+    stream_machine:
+        user: xxx
+        password: xxx
