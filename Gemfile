@@ -1,10 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.3'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.16'
 gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'newrelic_rpm'
-gem 'capistrano', '~> 2.15.0'
 gem 'jquery-rails', '~> 3.1.0'
 gem 'jbuilder', '~> 2.0.4'
 gem 'yajl-ruby' # Faster JSON parsing
@@ -21,14 +19,13 @@ gem "streamio-ffmpeg", git: "git://github.com/SCPR/streamio-ffmpeg.git"
 
 
 gem 'eco', '~> 1.0.0'
-gem 'sass-rails',   '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'therubyracer'
 gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 2.2'
 
 group :development do
-  gem "dbsync"
+  gem "dbsync", ">= 1.0.0.beta2"
   gem 'guard'
   gem 'guard-resque'
   gem 'guard-rspec'
