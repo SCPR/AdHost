@@ -3,7 +3,7 @@ require 'rails/all'
 
 Bundler.require(:default, Rails.env)
 
-module Audiobox
+module AdHost
   class Application < Rails::Application
     config.time_zone = 'Pacific Time (US & Canada)'
     config.active_record.default_timezone = :local

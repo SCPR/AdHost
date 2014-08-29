@@ -1,4 +1,4 @@
-Audiobox::Application.routes.draw do
+AdHost::Application.routes.draw do
   get '/pre/p/:key/:stream_key' => "public#preroll"
 
   namespace :api, defaults: { format: "json" } do

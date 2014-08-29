@@ -2,7 +2,7 @@ require 'securerandom'
 
 class AudioEncoding < ActiveRecord::Base
   class EncodingJob
-    @queue = "audiobox"
+    @queue = "adhost"
 
     class << self
       def perform(id)
