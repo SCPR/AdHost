@@ -9,6 +9,7 @@ gem 'yajl-ruby' # Faster JSON parsing
 gem 'resque', '~> 1.25.2'
 gem 'carrierwave', '~> 0.10.0'
 gem 'redis-rails', '~> 4.0.0'
+gem 'newrelic_rpm'
 
 gem 'outpost-cms'
 gem 'select2-rails', '3.4.1'
