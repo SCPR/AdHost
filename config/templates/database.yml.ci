@@ -5,11 +5,3 @@ development:
 test:
   adapter: mysql2
   database: adhost_test
-
-scpr_development:
-  adapter: mysql2
-  database: scpr_development
-
-scpr_test:
-  adapter: mysql2
-  database: adhost_test

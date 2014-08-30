@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429192259) do
+ActiveRecord::Schema.define(version: 20140830214308) do
+
+  create_table "permissions", force: true do |t|
+    t.string   "resource"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "permissions", ["resource"], name: "index_permissions_on_resource", using: :btree
 
   create_table "preroller_audio_encodings", force: true do |t|
     t.integer  "campaign_id", null: false
@@ -45,11 +53,34 @@ ActiveRecord::Schema.define(version: 20140429192259) do
   create_table "preroller_outputs", force: true do |t|
     t.string   "key",         null: false
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "preroller_outputs", ["key"], name: "index_preroller_outputs_on_key", using: :btree
+  create_table "user_permissions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "permission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_permissions", ["permission_id"], name: "index_user_permissions_on_permission_id", using: :btree
+  add_index "user_permissions", ["user_id", "permission_id"], name: "index_user_permissions_on_user_id_and_permission_id", using: :btree
+  add_index "user_permissions", ["user_id"], name: "index_user_permissions_on_user_id", using: :btree
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "can_login"
+    t.boolean  "is_superuser"
+    t.datetime "last_login"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["username", "can_login"], name: "index_users_on_username_and_can_login", using: :btree
 
   create_table "visual_campaigns", force: true do |t|
     t.string   "title"

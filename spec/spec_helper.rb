@@ -28,17 +28,17 @@ RSpec.configure do |config|
   config.include FixtureStubs
 
   config.before :suite do
-    DatabaseCleaner.clean_with :truncation
+    DatabaseCleaner.clean_with :truncation, except: ["permissions"]
+
+    Outpost.config.registered_models.each do |model|
+      Permission.create(resource: model)
+    end
 
     # We're using truncation because the audio filename contains
     # the campaign ID, so it's important that autoincrement resets
     # to 1, otherwise we'd have to rename files throughout the
     # test suite.
-    DatabaseCleaner.strategy = :truncation
-  end
-
-  config.before type: :feature do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :truncation, { except: ["permissions"] }
   end
 
   config.before :each do

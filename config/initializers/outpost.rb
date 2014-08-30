@@ -1,6 +1,7 @@
 Outpost::Config.configure do |config|
   config.registered_models = [
     "PrerollCampaign",
+    "User",
     "VisualCampaign"
   ]
 

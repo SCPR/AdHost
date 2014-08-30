@@ -1,0 +1,43 @@
+<%= form_block "Personal Details" do %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+<% end %>
+
+
+<%= form_block "Login" do %>
+  <%= f.input :username %>
+<% end %>
+
+
+<%= form_block record.new_record? ? "Password" : "Change Password" do %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+<% end %>
+
+
+<%= form_block "Permissions" do %>
+  <% if current_user.is_superuser? %>
+    <%= f.input :can_login %>
+    <%= f.input :is_superuser %>
+    <%= f.association :permissions %>
+
+  <% else %>
+
+    <ul>
+      <li><strong>Superuser:</strong> <%= record.is_superuser? %></li>
+      <li><strong>Can Login:</strong> <%= record.can_login? %></li>
+
+      <li><strong>Permissions:</strong>
+        <ul>
+          <% record.permissions.each do |permission| %>
+            <li><%= permission.title %></li>
+          <% end %>
+
+          <% if record.permissions.empty? %>
+            <li>You have no permissions.</li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+<% end %>

@@ -20,6 +20,7 @@ AdHost::Application.routes.draw do
 
   namespace :outpost do
     resources :visual_campaigns
+    resources :users
 
     resources :preroll_campaigns do
       member do
