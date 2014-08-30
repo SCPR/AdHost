@@ -11,4 +11,16 @@ table {
         }
     }
 
+    &.list-users {
+        .column-name {
+            width: 300px;
+        }
+        .column-can_login {
+            width: $booleanWidth + 20;
+        }
+        .column-last_login {
+            width: 200px;
+        }
+    }
+
 }
