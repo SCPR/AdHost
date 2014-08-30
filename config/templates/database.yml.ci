@@ -1,15 +1,15 @@
 development:
   adapter: mysql2
-  database: adhost_dev
+  database: adhost_development
 
 test:
   adapter: mysql2
   database: adhost_test
 
-mercer_development:
+scpr_development:
   adapter: mysql2
-  database: mercer
+  database: scpr_development
 
-mercer_test:
+scpr_test:
   adapter: mysql2
   database: adhost_test
