@@ -26,7 +26,7 @@ class PrerollCampaign < ActiveRecord::Base
     :dependent    => :destroy
 
   scope :active, -> {
-    where("starts_at <= :now and ends_at > :now", now: Time.now)
+    where("starts_at <= :now and ends_at > :now", now: Time.zone.now)
   }
 
   validates :title, presence: true

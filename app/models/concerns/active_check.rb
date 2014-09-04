@@ -1,6 +1,6 @@
 module ActiveCheck
   def active?
-    t = Time.now
+    t = Time.zone.now
 
     if self.starts_at && self.ends_at
       return t >= self.starts_at && t < self.ends_at

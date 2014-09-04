@@ -131,7 +131,7 @@ describe PublicController do
       Rails.cache.write("adhost:stream_stats",
         JSON.parse(load_fixture("sm_stats.json")))
 
-      Rails.cache.write("adhost:stream_stats:last_cache", Time.now.to_i)
+      Rails.cache.write("adhost:stream_stats:last_cache", Time.zone.now.to_i)
 
       get :listeners, format: :xml
 

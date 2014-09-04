@@ -15,7 +15,7 @@ namespace :adhost do
     json = JSON.parse(response.body)
     puts json
 
-    Rails.cache.write("adhost:stream_stats:last_cache", Time.now.to_i)
+    Rails.cache.write("adhost:stream_stats:last_cache", Time.zone.now.to_i)
     Rails.cache.write("adhost:stream_stats", json)
 
     puts "Finished."
