@@ -83,12 +83,13 @@ class AudioEncoding < ActiveRecord::Base
       end
 
       self.save!
+    rescue => e
+      self.destroy
+      raise e
     ensure
       temp.close
       temp.unlink
     end
-
-    return true
   end
 
 
