@@ -103,8 +103,8 @@ describe Api::Public::V1::VisualCampaignsController do
         json["visual_campaign"]["key"].should eq campaign.output_key.as_json
         json["visual_campaign"]["domains"].should eq campaign.domains.as_json
         json["visual_campaign"]["title"].should eq campaign.title.as_json
-        json["visual_campaign"]["starts_at"].should eq campaign.starts_at.xmlschema
-        json["visual_campaign"]["ends_at"].should eq campaign.ends_at.xmlschema
+        Time.parse(json["visual_campaign"]["starts_at"]).to_i.should eq campaign.starts_at.to_i
+        Time.parse(json["visual_campaign"]["ends_at"]).to_i.should eq campaign.ends_at.to_i
         json["visual_campaign"]["cookie_key"].should eq campaign.cookie_key.as_json
         json["visual_campaign"]["cookie_ttl_hours"].should eq campaign.cookie_ttl_hours.as_json
       end
