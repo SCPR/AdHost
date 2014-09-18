@@ -36,7 +36,6 @@ class PrerollCampaign < ActiveRecord::Base
   mount_uploader :master_file, AudioUploader
   after_update :clear_encodings, :if => -> { self.master_file_changed? }
 
-
   class << self
     # For outpost
     def output_keys_select_collection
