@@ -18,7 +18,8 @@
 <%= form_block "Scheduling" do %>
     <div class="alert alert-info">
         To mark this campaign as inactive, leave these fields blank.<br />
-        Setting one or both will automatically activate/deactivate this campaign based on these times.
+        Setting the dates will automatically activate/deactivate this campaign based on these times.<br />
+        If the start date is in the past and the end date blank, the campaign will be active indefinitely.
     </div>
 
     <%= f.input :starts_at, include_blank: true %>

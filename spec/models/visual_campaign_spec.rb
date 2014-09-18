@@ -13,6 +13,14 @@ describe VisualCampaign do
 
       VisualCampaign.active.to_a.should eq [active]
     end
+
+    it 'gets campaigns without an end date if the start date is in the past' do
+      campaign1 = create :visual_campaign, starts_at: 1.day.ago, ends_at: nil
+      campaign2 = create :visual_campaign, starts_at: 1.day.from_now, ends_at: nil
+
+      VisualCampaign.active.to_a.should eq [campaign1]
+    end
+
   end
 
   describe '#allowed_domains' do

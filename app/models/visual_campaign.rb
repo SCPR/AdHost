@@ -4,7 +4,8 @@ class VisualCampaign < ActiveRecord::Base
   outpost_model
 
   scope :active, -> {
-    where('starts_at <= :now and ends_at > :now', now: Time.zone.now)
+    where("starts_at <= :now and (ends_at > :now or ends_at is null)",
+      now: Time.zone.now)
   }
 
   validates :title, presence: true

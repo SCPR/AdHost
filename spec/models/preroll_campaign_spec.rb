@@ -8,6 +8,13 @@ describe PrerollCampaign do
 
       PrerollCampaign.active.to_a.should eq [campaign1]
     end
+
+    it 'gets campaigns without an end date if the start date is in the past' do
+      campaign1 = create :campaign, starts_at: 1.day.ago, ends_at: nil
+      campaign2 = create :campaign, starts_at: 1.day.from_now, ends_at: nil
+
+      PrerollCampaign.active.to_a.should eq [campaign1]
+    end
   end
 
 
