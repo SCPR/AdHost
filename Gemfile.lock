@@ -179,6 +179,7 @@ GEM
     guard-rspec (4.2.8)
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
+    hashie (3.3.2)
     hike (1.2.3)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -290,6 +291,8 @@ GEM
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
+    rufus-scheduler (3.0.9)
+      tzinfo
     safe_yaml (1.0.3)
     sass (3.2.19)
     sass-rails (4.0.3)
@@ -354,6 +357,7 @@ DEPENDENCIES
   guard
   guard-resque
   guard-rspec
+  hashie
   jbuilder (~> 2.0.4)
   jquery-rails (~> 3.1.0)
   kaminari
@@ -366,6 +370,7 @@ DEPENDENCIES
   resque (~> 1.25.2)
   resque-pool!
   rspec-rails (~> 2.12)
+  rufus-scheduler
   sass-rails (~> 4.0.0)
   select2-rails (= 3.4.1)
   simple_form (~> 3.0.0)

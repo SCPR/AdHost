@@ -27,6 +27,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 2.2'
 
+gem "rufus-scheduler"
+gem 'hashie'
+
 group :development do
   gem "dbsync", ">= 1.0.0.beta2"
   gem 'guard'
