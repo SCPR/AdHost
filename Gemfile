@@ -7,7 +7,7 @@ gem 'jquery-rails', '~> 3.1.0'
 gem 'jbuilder', '~> 2.0.4'
 gem 'yajl-ruby' # Faster JSON parsing
 gem 'resque', '~> 1.25.2'
-gem 'resque-pool', '~> 0.3.0'
+gem 'resque-pool', github:"SCPR/resque-pool"
 gem 'carrierwave', '~> 0.10.0'
 gem 'redis-rails', '~> 4.0.0'
 gem 'newrelic_rpm'

@@ -1,4 +1,4 @@
-Resque.redis = Rails.application.config.secrets['resque']
+Resque.redis = Rails.application.secrets['resque']
 
 Resque.after_fork do |job|
   # Every time a job is started, make sure the connection

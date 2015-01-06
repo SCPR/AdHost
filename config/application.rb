@@ -14,10 +14,8 @@ module AdHost
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
-    config.secrets = YAML.load_file("#{Rails.root}/config/app_config.yml")[Rails.env]
-
-    config.cache_store    = :redis_store, config.secrets['cache']
-    config.audio_dir      = config.secrets['audio_dir']
-    config.ffmpeg_binary  = config.secrets['ffmpeg_bin']
+    config.cache_store    = :redis_store, Rails.application.secrets['cache']
+    config.audio_dir      = Rails.application.secrets['audio_dir']
+    config.ffmpeg_binary  = Rails.application.secrets['ffmpeg_bin']
   end
 end
