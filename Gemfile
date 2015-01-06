@@ -19,6 +19,7 @@ gem 'simple_form', '~> 3.0.0'
 gem 'kaminari'
 gem "streamio-ffmpeg", git: "git://github.com/SCPR/streamio-ffmpeg.git"
 
+gem 'fog'
 
 gem 'eco', '~> 1.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -34,6 +35,7 @@ group :development do
 end
 
 group :test do
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.12'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
