@@ -54,21 +54,24 @@ class AudioEncoding < ActiveRecord::Base
 
   def path
     return nil if !self.fingerprint || !self.campaign_id
-
-    File.join(
-      Rails.application.config.audio_dir,
-      "#{self.campaign_id}-#{self.fingerprint}.#{self.extension}"
-    )
+    "#{self.campaign_id}-#{self.fingerprint}.#{self.extension}"
   end
 
 
   def encode
     # we'll encode into a temp file and then move it into place
-    master  = self.campaign.master_file
-    temp    = Tempfile.new(['preroller', ".#{self.extension}"])
+
+    mobj  = S3_BUCKET.objects[ self.campaign.master_file.path ]
+    mtmp  = Tempfile.new('adhost',encoding:"ASCII-8BIT")
+    mtmp.write mobj.read()
+    mtmp.rewind()
+
+    puts "mtmp length is #{ mtmp.length }"
+
+    temp  = Tempfile.new(['adhost', ".#{self.extension}"],encoding:"ASCII-8BIT")
 
     begin
-      master = FFMPEG::Movie.new(master.path)
+      master = FFMPEG::Movie.new(mtmp.path)
       transcode(master, temp)
 
       transcoded = FFMPEG::Movie.new(temp.path)
@@ -77,21 +80,29 @@ class AudioEncoding < ActiveRecord::Base
       self.fingerprint = SecureRandom.hex(16)
 
       temp.rewind
+
       # now write it into place in our final location
-      File.open(self.path, 'w', encoding: "ascii-8bit") do |f|
-        f << temp.read
-      end
+      eobj = S3_BUCKET.objects[ self.path ]
+      eobj.write temp
 
       self.save!
     rescue => e
-      self.destroy
+      #self.destroy
       raise e
     ensure
+      mtmp.close
+      mtmp.unlink
+
       temp.close
       temp.unlink
     end
   end
 
+  def s3_object
+    if self.path
+      S3_BUCKET.objects[self.path]
+    end
+  end
 
   private
 
@@ -105,8 +116,8 @@ class AudioEncoding < ActiveRecord::Base
   end
 
   def delete_file
-    if self.path && File.exists?(self.path)
-      File.delete(self.path)
+    if obj = self.s3_object
+      obj.delete
     end
   end
 end

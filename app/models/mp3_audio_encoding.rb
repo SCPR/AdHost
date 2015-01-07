@@ -2,7 +2,6 @@ class MP3AudioEncoding < AudioEncoding
   CODEC       = 'libmp3lame'
   EXTENSION   = "mp3"
 
-
   def profile
     nil # AAC only
   end

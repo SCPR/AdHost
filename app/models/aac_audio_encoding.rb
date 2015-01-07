@@ -3,7 +3,6 @@ class AACAudioEncoding < AudioEncoding
   PROFILE     = 'mpeg2_aac_low'
   EXTENSION   = "aac"
 
-
   def bitrate
     nil # MP3 only
   end

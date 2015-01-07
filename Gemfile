@@ -8,7 +8,10 @@ gem 'jbuilder', '~> 2.0.4'
 gem 'yajl-ruby' # Faster JSON parsing
 gem 'resque', '~> 1.25.2'
 gem 'resque-pool', github:"SCPR/resque-pool"
+
 gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave-aws'
+
 gem 'redis-rails', '~> 4.0.0'
 gem 'newrelic_rpm'
 
@@ -19,7 +22,7 @@ gem 'simple_form', '~> 3.0.0'
 gem 'kaminari'
 gem "streamio-ffmpeg", git: "git://github.com/SCPR/streamio-ffmpeg.git"
 
-gem 'fog'
+#gem 'fog'
 
 gem 'eco', '~> 1.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -29,6 +32,7 @@ gem 'bootstrap-sass', '~> 2.2'
 
 gem "rufus-scheduler"
 gem 'hashie'
+gem 'aws-sdk'
 
 group :development do
   gem "dbsync", ">= 1.0.0.beta2"

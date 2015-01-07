@@ -25,9 +25,11 @@ class PublicController < ApplicationController
     @campaign ||= campaigns.select { |c| c.path_filter.blank? }.sample
 
     if @campaign
-      if file = @campaign.file_for_stream_key(params[:stream_key])
-        # Got it... send a file
-        send_file file, :disposition => 'inline' and return
+      if encoding = @campaign.encoding_for_stream_key(params[:stream_key])
+        if obj = encoding.s3_object
+          # Got it... send a file
+          send_data obj.read(), :type => "audio/mpeg", :disposition => 'inline' and return
+        end
       end
     end
 

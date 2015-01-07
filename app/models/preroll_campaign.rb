@@ -54,15 +54,15 @@ class PrerollCampaign < ActiveRecord::Base
   end
 
 
-  # Takes a stream key and returns a file path
+  # Takes a stream key and returns an encoding
   # MP3 Stream key format: (codec)-(samplerate)-(bitrate)-(m/s)
   # AAC Stream key format: (codec)-(samplerate)-(profile)-(1/2)
   # For instance: mp3-44100-64-m, aac-44100-48-m, etc
-  def file_for_stream_key(key)
+  def encoding_for_stream_key(key)
     PrerollCampaign.verify_stream_key(key)
 
     if encoding = self.encodings.find_by_stream_key(key)
-      return encoding.path
+      return encoding
     else
       type = AudioEncoding::TYPES[key.split("-")[0]]
 

@@ -1,7 +1,7 @@
 require 'securerandom'
 
 class AudioUploader < CarrierWave::Uploader::Base
-  storage :file
+  storage :aws
   permissions 0777
 
   def move_to_cache
@@ -12,11 +12,10 @@ class AudioUploader < CarrierWave::Uploader::Base
     Rails.env != 'test'
   end
 
-
   def store_dir
-    Rails.application.config.audio_dir
+    #Rails.application.config.audio_dir
+    ""
   end
-
 
   def filename
     if original_filename.present?
@@ -29,8 +28,7 @@ class AudioUploader < CarrierWave::Uploader::Base
     end
   end
 
-
   def extension_white_list
-    %w{ mp3 wav }
+    %w{ mp3 wav mp4 }
   end
 end
