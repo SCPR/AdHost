@@ -1,3 +1,5 @@
+require "resque/server"
+
 AdHost::Application.routes.draw do
   get '/pre/p/:key/:stream_key' => "public#preroll"
 
@@ -18,7 +20,22 @@ AdHost::Application.routes.draw do
 
   mount Outpost::Engine, at: 'outpost'
 
+
+
   namespace :outpost do
+    resque_constraint = ->(request) do
+      user_id = request.session.to_hash["user_id"]
+
+      if user_id && u = User.find_by(:id => user_id)
+        u.is_superuser?
+      else
+        false
+      end
+    end
+
+    constraints resque_constraint do
+      mount Resque::Server.new, :at => "resque"
+    end
     resources :visual_campaigns
     resources :users
 
