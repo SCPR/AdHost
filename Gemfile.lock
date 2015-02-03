@@ -278,6 +278,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   aws-sdk
   bcrypt-ruby (~> 3.0)
   bootstrap-sass (~> 2.2)

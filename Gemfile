@@ -22,6 +22,8 @@ gem 'simple_form', '~> 3.0.0'
 gem 'kaminari'
 gem "streamio-ffmpeg", git: "git://github.com/SCPR/streamio-ffmpeg.git"
 
+gem 'addressable'
+
 #gem 'fog'
 
 gem 'eco', '~> 1.0.0'
