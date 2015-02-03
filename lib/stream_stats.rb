@@ -1,3 +1,5 @@
+require 'addressable/uri'
+
 module StreamStats
   def self.get
     s = Rails.cache.read("stream_stats")
@@ -8,21 +10,20 @@ module StreamStats
     puts "Caching stream stats..."
 
     sm_config = Rails.application.secrets['stream_machine']
-    uri = URI(sm_config['url'])
+    uri = Addressable::URI.parse(sm_config['url'])
 
-    http    = Net::HTTP.new(uri.host, uri.port)
+    http    = Net::HTTP.new(uri.host, uri.port, nil)
     request = Net::HTTP::Get.new(uri.request_uri)
-    request.basic_auth(sm_config['user'], sm_config['password'])
     response = http.request(request)
 
     json = JSON.parse(response.body)
 
-    listeners = 0
-    json.each do |stream|
-      listeners += stream['listeners']
-    end
+    # we skip the first minute SM gives us, since it may still be in flux.
+    # just grab avg_listeners out of minute two
 
-    Rails.cache.write("stream_stats", { ts:Time.zone.now.to_i, listeners:listeners })
+    listeners = json[1]['avg_listeners']
+
+    Rails.cache.write("stream_stats", { ts:Time.zone.parse(json[1]['time']).to_i, listeners:listeners })
 
     true
   end
