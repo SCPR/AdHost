@@ -10,7 +10,7 @@ class PrerollCampaign < ActiveRecord::Base
   VALID_STREAM_KEYS = [
     # MP3 key: (codec)-(samplerate)-(bitrate)-(mono/stereo)
     # Example: mp3-44100-64-m, aac-44100-48-m, etc
-    /\Amp3-(44100|24000|22050)-(192|160|128|64|48)-(m|s)\z/,
+    /\Amp3-(48000|44100|32000|24000|22050)-(320|256|192|160|128|80|64|48)-(m|s)\z/,
 
     # AAC key: (codec)-(samplerate)-(profile index)-(number of channels)
     # Example: aac-44100-2-1, aac-44100-3-2, etc
