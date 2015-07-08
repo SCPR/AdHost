@@ -38,6 +38,7 @@ class PublicController < ApplicationController
 
 
   def listeners
+    StreamStats.cache()
     stats = StreamStats.get()
 
     if !stats
