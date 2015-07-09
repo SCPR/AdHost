@@ -48,7 +48,11 @@ class PublicController < ApplicationController
       return
     end
 
-    @time       = stats.ts
-    @listeners  = stats.listeners
+    obj = { DATA:{
+      TSEPOCH:stats.ts.to_s,
+      STREAMINGPLAYERS:stats.listeners.to_s
+    }}
+
+    render :xml => obj
   end
 end
