@@ -5,6 +5,7 @@ AWS_CONFIG = {
   secret_access_key:  s3_config.secret_key,
   s3_endpoint:        "s3.i.scprdev.org",
   ssl_verify_peer:    false,
+  use_ssl:            false,
 }
 
 CarrierWave.configure do |config|
